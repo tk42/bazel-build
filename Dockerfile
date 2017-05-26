@@ -1,11 +1,15 @@
 FROM ubuntu:16.04
+FROM python:slim
 MAINTAINER Tadashi KOJIMA <nsplat@gmail.com>
 
+# Preinstall
+RUN apt-get autoclean && apt-get update && apt-get upgrade -y && \
+    apt-get install -y -q wget curl git gcc build-essential && \
+
+# Install Python
+    pip3 install -U pip && \
+
 # Install dependencies of Bazel
-RUN apt-get install software-properties-common && \
-    apt-add-repository universe && \
-    apt-get update && \
-    apt-get install -y curl git && \
     apt-get install -y pkg-config zip g++ zlib1g-dev unzip && \
     rm -rf /var/lib/apt/lists/* && \
 
@@ -21,9 +25,4 @@ RUN apt-get install software-properties-common && \
     echo "startup --batch\nbuild --spawn_strategy=standalone --genrule_strategy=standalone" > /root/.bazelrc && \
 
 # run bazel to avoid "Extracting Bazel installation..."
-    /root/bin/bazel && \
-
-# Install Python
-    apt-get install -y python && \
-    apt-get install -y python3-pip python-dev && \
-    pip install --upgrade pip
+    /root/bin/bazel
