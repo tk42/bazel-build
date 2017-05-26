@@ -1,11 +1,11 @@
 FROM ubuntu:16.04
 MAINTAINER Tadashi KOJIMA <nsplat@gmail.com>
 
-RUN mv /etc/apt/sources.list /etc/apt/sources.list.save && \
-    mv sources.list /etc/apt/sources.list && \
+RUN mv /etc/apt/sources.list /etc/apt/sources.list.save
+COPY sources.list /etc/apt/sources.list
 
 # Install dependencies of Bazel
-    apt-get update && \
+RUN apt-get update && \
     apt-get install -y curl git && \
     apt-get install -y pkg-config zip g++ zlib1g-dev unzip && \
     rm -rf /var/lib/apt/lists/* && \
