@@ -1,4 +1,4 @@
 bazel-build
 ====
-Bazel image based on Ubuntu 14.04
+Bazel image based on Ubuntu 16.04
 Python is also installed.

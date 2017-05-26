@@ -1,9 +1,6 @@
 FROM ubuntu:16.04
 MAINTAINER Tadashi KOJIMA <nsplat@gmail.com>
 
-RUN mv /etc/apt/sources.list /etc/apt/sources.list.save
-COPY sources.list /etc/apt/sources.list
-
 # Install dependencies of Bazel
 RUN apt-get update && \
     apt-get install -y curl git && \
