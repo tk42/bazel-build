@@ -1,11 +1,11 @@
-FROM ubuntu:14.04
+FROM ubuntu:16.04
 MAINTAINER Tadashi KOJIMA <nsplat@gmail.com>
 
 RUN mv /etc/apt/sources.list /etc/apt/sources.list.save && \
-    mv sources.list /etc/apt/sources.list
+    mv sources.list /etc/apt/sources.list && \
 
 # Install dependencies of Bazel
-RUN apt-get update && \
+    apt-get update && \
     apt-get install -y curl git && \
     apt-get install -y pkg-config zip g++ zlib1g-dev unzip && \
     rm -rf /var/lib/apt/lists/* && \
@@ -25,6 +25,6 @@ RUN apt-get update && \
     /root/bin/bazel && \
 
 # Install Python
-	apt-get install -y python
-	apt-get install -y python-pip python-dev
-	pip install --upgrade pip
+    apt-get install -y python && \
+    apt-get install -y python-pip python-dev && \
+    pip install --upgrade pip
