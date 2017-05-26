@@ -2,7 +2,9 @@ FROM ubuntu:16.04
 MAINTAINER Tadashi KOJIMA <nsplat@gmail.com>
 
 # Install dependencies of Bazel
-RUN apt-get update && \
+RUN apt-get install software-properties-common && \
+    apt-add-repository universe && \
+    apt-get update && \
     apt-get install -y curl git && \
     apt-get install -y pkg-config zip g++ zlib1g-dev unzip && \
     rm -rf /var/lib/apt/lists/* && \
@@ -23,5 +25,5 @@ RUN apt-get update && \
 
 # Install Python
     apt-get install -y python && \
-    apt-get install -y python-pip python-dev && \
+    apt-get install -y python3-pip python-dev && \
     pip install --upgrade pip
