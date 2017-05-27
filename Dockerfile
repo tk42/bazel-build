@@ -5,9 +5,6 @@ FROM openjdk:8
 
 MAINTAINER Tadashi KOJIMA <nsplat@gmail.com>
 
-# Install Python
-RUN pip3 install -U pip && \
-
 # Install Bazel
 RUN echo "deb [arch=amd64] http://storage.googleapis.com/bazel-apt stable jdk1.8" | tee /etc/apt/sources.list.d/bazel.list \
   && curl https://bazel.build/bazel-release.pub.gpg | apt-key add -
