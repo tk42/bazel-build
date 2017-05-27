@@ -2,17 +2,17 @@ FROM ubuntu:16.04
 FROM python:slim
 MAINTAINER Tadashi KOJIMA <nsplat@gmail.com>
 
+# Install Python
+RUN pip3 install -U pip && \
+
 # last line of install packages are Bazel requirements
-RUN apt-get update && \
+    apt-get update && \
     apt-get install -y git man gcc vim-nox cscope exuberant-ctags silversearcher-ag \
                     screen wget curl xz-utils ncdu pax-utils \
                     pkg-config zlib1g-dev python unzip zip g++ bash-completion \
                     make bison flex &&\
     rm -rf /var/lib/apt/lists/* &&\
-    apt-get clean -yq
-
-# Install Python
-    pip3 install -U pip && \
+    apt-get clean -yq &&\
 
 # Install dependencies of Bazel
     apt-get install -y pkg-config zip g++ zlib1g-dev unzip && \
