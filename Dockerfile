@@ -17,8 +17,14 @@ RUN apt-get autoclean && apt-get update && apt-get upgrade -y && \
     echo "startup --batch" >>/tmp/bazelrc &&\
     echo "build --spawn_strategy=standalone --genrule_strategy=standalone" >>/tmp/bazelrc && \
 
+# donwload java 8 directly and extract
+    wget -qO-  --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u45-b14/jdk-8u45-linux-x64.tar.gz|tar xvz
+
+ENV JAVA_HOME /jdk1.8.0_45
+ENV PATH $JAVA_HOME/bin:$PATH
+
 # build bazel from src (tag: 0.5.0 from https://github.com/bazelbuild/bazel/releases)
-    git clone https://github.com/google/bazel.git /bazel && cd /bazel && git checkout 0.5.0 &&\
+RUN git clone https://github.com/google/bazel.git /bazel && cd /bazel && git checkout 0.5.0 &&\
         BAZELRC=/tmp/bazelrc /bazel/compile.sh && \
 
 ENV PATH $PATH:/bazel/output/
