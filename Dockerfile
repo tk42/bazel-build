@@ -1,5 +1,5 @@
 FROM ubuntu:16.04
-FROM python:slim
+FROM python:3.6-slim
 # Install Bazel, https://bazel.build/versions/master/docs/install.html#ubuntu
 FROM openjdk:8
 
@@ -19,4 +19,9 @@ RUN apt-get update \
   && export PATH=$PATH:/usr/bin
 
 # Install make
-RUN apt-get install make
+RUN apt-get update \
+    && apt-get install -y make
+
+# Install python modules
+RUN apt-get install -y python3-pip python3-dev
+    && pip3 install --upgrade pip
