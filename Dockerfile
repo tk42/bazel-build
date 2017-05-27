@@ -24,7 +24,7 @@ RUN apt-get autoclean && apt-get update && apt-get upgrade -y && \
     export PATH && \
 
 # we use this to avoid using --privileged flag
-    echo "startup --batch\nbuild --spawn_strategy=standalone --genrule_strategy=standalone" > /root/.bashrc && \
+    echo "startup --batch\nbuild --spawn_strategy=standalone --genrule_strategy=standalone" > /home/.bashrc && \
 
 # run bazel to avoid "Extracting Bazel installation..."
-	bazel
+    bazel
