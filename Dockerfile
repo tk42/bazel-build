@@ -23,5 +23,5 @@ RUN apt-get update \
     && apt-get install -y make
 
 # Install python modules
-RUN apt-get install -y python3-pip python3-dev
+RUN apt-get install -y python3-pip python3-dev \
     && pip3 install --upgrade pip
