@@ -17,3 +17,6 @@ RUN apt-get update \
   && bazel \
 
   && export PATH=$PATH:/usr/bin
+
+# Install make
+RUN apt-get install make
