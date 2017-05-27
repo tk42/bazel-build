@@ -22,8 +22,8 @@ RUN apt-get autoclean && apt-get update && apt-get upgrade -y && \
     rm bazel-install.sh && \
 
 # we use this to avoid using --privileged flag
-    echo "startup --batch\nbuild --spawn_strategy=standalone --genrule_strategy=standalone" > /root/.bazelrc && \
-    echo "source /root/.bazel/bin/bazel-complete.bash" > /root/.bazelrc && \
+    echo "startup --batch\nbuild --spawn_strategy=standalone --genrule_strategy=standalone" > /root/.bashrc && \
+    echo "source /root/.bazel/bin/bazel-complete.bash" > /root/.bashrc && \
 
 # run bazel to avoid "Extracting Bazel installation..."
 	bazel
