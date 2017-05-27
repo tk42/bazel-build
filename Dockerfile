@@ -14,4 +14,6 @@ RUN apt-get update \
   && rm -rf /var/lib/apt/lists/* \
 
 # run bazel test
-  && bazel
+  && bazel \
+
+  && export PATH=$PATH:/usr/bin
