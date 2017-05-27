@@ -18,10 +18,9 @@ RUN apt-get autoclean && apt-get update && apt-get upgrade -y && \
     https://github.com/bazelbuild/bazel/releases/download/0.5.0/bazel-0.5.0-installer-linux-x86_64.sh \
     -o bazel-install.sh && \
     chmod 700 bazel-install.sh && \
-    ./bazel-install.sh --user && \
-    rm bazel-install.sh && \
-    echo "source /root/.bazel/bin/bazel-complete.bash" > /root/.bashrc && \
-    PATH=$PATH:/root/bin && \
+    ./bazel-install.sh && \
+    echo "source /home/.bazel/bin/bazel-complete.bash" > /home/.bashrc && \
+    PATH=$PATH:/home/.bazel/bin && \
     export PATH && \
 
 # we use this to avoid using --privileged flag
