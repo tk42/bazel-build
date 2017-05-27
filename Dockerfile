@@ -25,3 +25,7 @@ RUN apt-get update \
 # Install python modules
 RUN apt-get install -y python3-pip python3-dev \
     && pip3 install --upgrade pip
+
+# Set up workspace
+ENV WORKSPACE /home
+WORKDIR /home
