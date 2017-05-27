@@ -13,18 +13,26 @@ RUN apt-get autoclean && apt-get update && apt-get upgrade -y && \
     apt-get install -y pkg-config zip g++ zlib1g-dev unzip && \
     rm -rf /var/lib/apt/lists/* && \
 
-# Install Bazel
-    curl -L \
-    https://github.com/bazelbuild/bazel/releases/download/0.5.0/bazel-0.5.0-installer-linux-x86_64.sh \
-    -o bazel-install.sh && \
-    chmod 700 bazel-install.sh && \
-    ./bazel-install.sh && \
-    echo "source /home/.bazel/bin/bazel-complete.bash" > /home/.bashrc && \
-    PATH=$PATH:/home/.bazel/bin && \
-    export PATH && \
+# fix the bazel building sandbox issue by disable sandboxing
+    echo "startup --batch" >>/tmp/bazelrc &&\
+    echo "build --spawn_strategy=standalone --genrule_strategy=standalone" >>/tmp/bazelrc && \
 
-# we use this to avoid using --privileged flag
-    echo "startup --batch\nbuild --spawn_strategy=standalone --genrule_strategy=standalone" > /home/.bashrc && \
+# build bazel from src (tag: 0.5.0 from https://github.com/bazelbuild/bazel/releases)
+    git clone https://github.com/google/bazel.git /bazel && cd /bazel && git checkout 0.5.0 &&\
+        BAZELRC=/tmp/bazelrc /bazel/compile.sh && \
+
+ENV PATH $PATH:/bazel/output/
+
+# config the bazel command complete
+RUN cd /bazel && \
+    bazel --bazelrc=/tmp/bazelrc build //scripts:bazel-complete.bash && \
+    cp bazel-bin/scripts/bazel-complete.bash /etc/bash_completion.d && \
+
+# create bazelrc
+    cd ~ && \
+    echo "build:arm --crosstool_top=//tools:toolchain --cpu=armeabi-v7a" >>.bazelrc && \
+    echo "build:i686 --crosstool_top=//tools:toolchain --cpu=i686" >>.bazelrc && \
+    echo "build:x86_64 --crosstool_top=//tools:toolchain --cpu=x86_64" >>.bazelrc && \
 
 # run bazel to avoid "Extracting Bazel installation..."
     bazel
