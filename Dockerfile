@@ -15,7 +15,6 @@ RUN apt-get update \
 
 # run bazel test
   && bazel \
-
   && export PATH=$PATH:/usr/bin
 
 # Install make
@@ -25,6 +24,9 @@ RUN apt-get update \
 # Install python modules
 RUN apt-get install -y python3-pip python3-dev \
     && pip3 install --upgrade pip
+
+# Install other modules
+RUN apt-get install pandoc
 
 # Set up workspace
 ENV WORKSPACE /home
