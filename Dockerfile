@@ -18,7 +18,7 @@ RUN apt-get update \
   && bazel
 
 # Install basic commands
-RUN install -y make vim less
+RUN apt-get install -y make vim less
 
 # Install python modules
 RUN apt-get install -y python3-pip python3-dev \
