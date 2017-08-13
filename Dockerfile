@@ -25,9 +25,6 @@ RUN apt-get update \
 RUN apt-get install -y python3-pip python3-dev \
     && pip3 install --upgrade pip
 
-# Install other modules
-RUN apt-get install -y pandoc
-
 # Set up workspace
 ENV WORKSPACE /home
 WORKDIR /home
