@@ -13,7 +13,7 @@ RUN apt-get update \
   && ./bazel-0.5.1-installer-linux-x86_64.sh --user \
 
 # run bazel test
-  && source /root/.bazel/bin/bazel-complete.bash \
+  && /bin/bash /root/.bazel/bin/bazel-complete.bash \
   && export PATH="$PATH:$HOME/bin" \
   && bazel
 
