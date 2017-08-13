@@ -1,11 +1,11 @@
 FROM ubuntu:16.04
 FROM python:3.6.2-jessie
-# Install Bazel, https://bazel.build/versions/master/docs/install.html#ubuntu
+# To install Bazel, see https://docs.bazel.build/versions/master/install-ubuntu.html#install-with-installer-ubuntu
 FROM openjdk:8
 
 MAINTAINER Tadashi KOJIMA <nsplat@gmail.com>
 
-# Install Bazel 0.5.1
+# Install Bazel 0.5.1 (0.5.3 has a problem related to python3)
 RUN apt-get update \
   && apt-get install -y pkg-config zip g++ zlib1g-dev unzip \
   && wget https://github.com/bazelbuild/bazel/releases/download/0.5.1/bazel-0.5.1-installer-linux-x86_64.sh \
@@ -13,8 +13,8 @@ RUN apt-get update \
   && ./bazel-0.5.1-installer-linux-x86_64.sh --user \
 
 # run bazel test
-  && bazel \
-  && export PATH="$PATH:$HOME/bin"
+  && export PATH="$PATH:$HOME/bin" \
+  && bazel
 
 # Install basic commands
 RUN install -y make vim less
