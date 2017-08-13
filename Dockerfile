@@ -9,16 +9,15 @@ MAINTAINER Tadashi KOJIMA <nsplat@gmail.com>
 RUN apt-get update \
   && apt-get install -y pkg-config zip g++ zlib1g-dev unzip \
   && wget https://github.com/bazelbuild/bazel/releases/download/0.5.1/bazel-0.5.1-installer-linux-x86_64.sh \
-  && chmod +x bazel-0.5.2-installer-linux-x86_64.sh \
-  && ./bazel-0.5.2-installer-linux-x86_64.sh --user \
+  && chmod +x ./bazel-0.5.1-installer-linux-x86_64.sh \
+  && ./bazel-0.5.1-installer-linux-x86_64.sh --user \
 
 # run bazel test
   && bazel \
   && export PATH="$PATH:$HOME/bin"
 
-# Install make
-RUN apt-get update \
-    && apt-get install -y make vim less
+# Install basic commands
+RUN install -y make vim less
 
 # Install python modules
 RUN apt-get install -y python3-pip python3-dev \
