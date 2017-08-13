@@ -1,5 +1,5 @@
 FROM ubuntu:16.04
-FROM python:3.6-slim
+FROM python:3.6.2-jessie
 # Install Bazel, https://bazel.build/versions/master/docs/install.html#ubuntu
 FROM openjdk:8
 
