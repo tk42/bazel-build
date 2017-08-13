@@ -16,6 +16,8 @@ RUN apt-get update \
   && ls -l bin/ \
   && export PATH="$PATH:$HOME/bin" \
   && echo $PATH \
+  && echo "export PATH=\$PATH:$HOME/bin" >> ~/.bashrc \
+  && . $HOME/.bashrc \
   && which bazel \
   && bazel
 
