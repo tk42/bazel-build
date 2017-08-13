@@ -19,11 +19,11 @@ RUN apt-get update \
 
 # Install make
 RUN apt-get update \
-    && apt-get install -y make
+    && apt-get install -y make vim
 
 # Install python modules
 RUN apt-get install -y python3-pip python3-dev \
-    && pip3 install --upgrade pip
+    && pip install --upgrade pip
 
 # Set up workspace
 ENV WORKSPACE /home
