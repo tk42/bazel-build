@@ -7,7 +7,7 @@ MAINTAINER Tadashi KOJIMA <nsplat@gmail.com>
 
 # Install Bazel 0.5.1
 RUN apt-get update \
-  && apt-get install pkg-config zip g++ zlib1g-dev unzip \
+  && apt-get install -y pkg-config zip g++ zlib1g-dev unzip \
   && wget https://github.com/bazelbuild/bazel/releases/download/0.5.1/bazel-0.5.1-installer-linux-x86_64.sh \
   && chmod +x bazel-0.5.2-installer-linux-x86_64.sh \
   && ./bazel-0.5.2-installer-linux-x86_64.sh --user \
