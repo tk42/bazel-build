@@ -14,7 +14,7 @@ RUN apt-get update \
 
 # run bazel test
   && /bin/bash /root/.bazel/bin/bazel-complete.bash \
-  && export PATH="$PATH:/root/.bazel/bin" \
+  && echo "export PATH=\$PATH:\$HOME/bin" >> ~/.bashrc \
   && bazel
 
 # Install basic commands
