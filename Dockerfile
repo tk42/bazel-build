@@ -10,15 +10,15 @@ RUN apt-get update \
   && apt-get install -y pkg-config zip g++ zlib1g-dev unzip \
   && wget https://github.com/bazelbuild/bazel/releases/download/0.5.1/bazel-0.5.1-installer-linux-x86_64.sh \
   && chmod +x ./bazel-0.5.1-installer-linux-x86_64.sh \
-  && ./bazel-0.5.1-installer-linux-x86_64.sh --user \
+  && ./bazel-0.5.1-installer-linux-x86_64.sh \
 
 # run bazel test
   && ls -l bin/ \
-  && export PATH="$PATH:$HOME/bin" \
+  && export PATH="$PATH:/root/bin" \
   && echo $PATH \
-  && echo "export PATH=\$PATH:$HOME/bin" >> ~/.bashrc \
-  && echo "exec /bin/bash" >> ~/.bashrc \
-  && . $HOME/.bashrc \
+  && echo "export PATH=\$PATH:/root/bin" >> /root/.bashrc \
+  && echo "exec /bin/bash" >> /root/.bashrc \
+  && . /root/.bashrc \
   && which bazel \
   && bazel
 
