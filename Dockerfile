@@ -16,11 +16,11 @@ RUN apt-get update \
   && ls -l bin/ \
   && export PATH="$PATH:/root/bin" \
   && echo $PATH \
+  && which bazel \
+  && bazel
   && echo "export PATH=\$PATH:/root/bin" >> /root/.bash_profile \
   && echo "exec /bin/bash" >> /root/.bash_profile \
   && . /root/.bash_profile \
-  && which bazel \
-  && bazel
 
 # Install basic commands
 RUN apt-get install -y make vim less
