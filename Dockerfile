@@ -16,9 +16,9 @@ RUN apt-get update \
   && ls -l bin/ \
   && export PATH="$PATH:/root/bin" \
   && echo $PATH \
-  && echo "export PATH=\$PATH:/root/bin" >> /root/.bashrc \
-  && echo "exec /bin/bash" >> /root/.bashrc \
-  && . /root/.bashrc \
+  && echo "export PATH=\$PATH:/root/bin" >> /root/.bash_profile \
+  && echo "exec /bin/bash" >> /root/.bash_profile \
+  && . /root/.bash_profile \
   && which bazel \
   && bazel
 
