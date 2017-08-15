@@ -19,6 +19,7 @@ RUN apt-get update \
   && which bazel \
   && bazel \
   && echo "export PATH=\$PATH:/root/bin" >> /root/.bash_profile \
+  && echo "alias python='/usr/bin/python3'" >> /root/.bash_profile \
   && echo "exec /bin/bash" >> /root/.bash_profile \
   && . /root/.bash_profile
 
