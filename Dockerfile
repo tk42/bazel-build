@@ -4,12 +4,12 @@ FROM python:latest
 
 MAINTAINER Tadashi KOJIMA <nsplat@gmail.com>
 
-# Install Bazel 0.5.2 (0.5.3 has a problem related to python3)
+# Install Bazel 0.5.3
 RUN apt-get update \
   && apt-get install -y pkg-config zip g++ zlib1g-dev unzip \
-  && wget https://github.com/bazelbuild/bazel/releases/download/0.5.2/bazel-0.5.2-installer-linux-x86_64.sh \
-  && chmod +x ./bazel-0.5.2-installer-linux-x86_64.sh \
-  && ./bazel-0.5.2-installer-linux-x86_64.sh \
+  && wget https://github.com/bazelbuild/bazel/releases/download/0.5.3/bazel-0.5.3-installer-linux-x86_64.sh \
+  && chmod +x ./bazel-0.5.3-installer-linux-x86_64.sh \
+  && ./bazel-0.5.3-installer-linux-x86_64.sh \
 
 # run bazel test
   && ls -l bin/ \
