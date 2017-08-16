@@ -1,10 +1,11 @@
 FROM ubuntu:16.04
 FROM python:latest
-# To install Bazel, see https://docs.bazel.build/versions/master/install-ubuntu.html#install-with-installer-ubuntu
+# Bazel uses jdk8. Importing jdk8 image in advance, docker runs faster.
+FROM openjdk:8
 
 MAINTAINER Tadashi KOJIMA <nsplat@gmail.com>
 
-# Install Bazel 0.5.3
+# To install Bazel, see https://docs.bazel.build/versions/master/install-ubuntu.html#install-with-installer-ubuntu
 RUN apt-get update \
   && apt-get install -y pkg-config zip g++ zlib1g-dev unzip \
   && wget https://github.com/bazelbuild/bazel/releases/download/0.5.3/bazel-0.5.3-installer-linux-x86_64.sh \
