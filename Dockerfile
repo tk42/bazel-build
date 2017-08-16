@@ -1,7 +1,6 @@
 FROM ubuntu:16.04
 FROM python:latest
 # To install Bazel, see https://docs.bazel.build/versions/master/install-ubuntu.html#install-with-installer-ubuntu
-FROM openjdk:8
 
 MAINTAINER Tadashi KOJIMA <nsplat@gmail.com>
 
