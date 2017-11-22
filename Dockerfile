@@ -35,5 +35,5 @@ RUN apt-get install -y python3-pip python3-dev \
 RUN apt-get install -y pandoc
 
 # Set up workspace
-ENV WORKSPACE /home
+ENV LOCAL_DIST_DIR /home
 WORKDIR /home
