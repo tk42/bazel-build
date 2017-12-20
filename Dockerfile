@@ -32,7 +32,7 @@ RUN apt-get install -y python3-pip python3-dev \
     && pip3 install --upgrade pip
 
 # Install other modules
-RUN apt-get install -y pandoc
+RUN apt-get install -y pandoc sqlite3
 
 # Set up workspace
 ENV LOCAL_DIST_DIR /home/workspace
