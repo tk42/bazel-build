@@ -36,7 +36,7 @@ RUN apt-get install -y python3-pip python3-dev \
     && ./configure --prefix=/usr/lib64 \
     && make \
     && make install \
-    && pip3 install TA-lib \
+    && pip3 install numpy TA-lib \
     && easy_install TA-Lib
 
 # Install other modules
