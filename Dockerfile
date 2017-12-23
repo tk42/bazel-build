@@ -35,7 +35,8 @@ RUN apt-get install -y python3-pip python3-dev \
     && cd ta-lib \
     && ./configure --prefix=/usr/lib64 \
     && make \
-    && sudo make install \
+    && make install \
+    && pip3 install TA-lib
     && easy_install TA-Lib
 
 # Install other modules
