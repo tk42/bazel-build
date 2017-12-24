@@ -28,7 +28,9 @@ RUN apt-get update \
 RUN apt-get install -y make vim less
 
 # Install python modules
-RUN apt-get install -y python3-pip python3-dev libssl-dev build-essential\
+RUN apt-get install -y python3-pip python3-dev\
+    && libssl-dev libffi-dev\ # for cryptography (required by twisted[tls])
+    && libxml2-dev libxslt1-dev\ # for lxml
     && pip3 install --upgrade pip numpy\
 	&& wget http://prdownloads.sourceforge.net/ta-lib/ta-lib-0.4.0-src.tar.gz \
     && tar -zxvf ta-lib-0.4.0-src.tar.gz \
