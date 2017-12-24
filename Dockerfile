@@ -29,17 +29,18 @@ RUN apt-get install -y make vim less
 
 # Install python modules
 RUN apt-get install -y python3-pip python3-dev\
-  && apt-get install -y libssl-dev libffi-dev\
-  && apt-get install -y libxml2-dev libxslt1-dev\
-  && pip3 install --upgrade pip numpy\
-  && wget http://prdownloads.sourceforge.net/ta-lib/ta-lib-0.4.0-src.tar.gz \
-  && tar -zxvf ta-lib-0.4.0-src.tar.gz \
-  && cd ta-lib \
-  && ./configure --prefix=/usr/lib64 \
-  && make \
-  && make install \
-  && pip3 install TA-lib \
-  && easy_install TA-Lib
+  && pip3 install --upgrade pip numpy
+
+# TA-Lib
+RUN wget http://prdownloads.sourceforge.net/ta-lib/ta-lib-0.4.0-src.tar.gz \
+  && tar -xvzf ta-lib-0.4.0-src.tar.gz\
+  && cd ta-lib/\
+  && ./configure --prefix=/usr\
+  && make\
+  && make install
+RUN git clone https://github.com/mrjbq7/ta-lib.git /ta-lib-py\
+  && cd ta-lib-py\
+  && python3 setup.py install
 
 # Install other modules
 RUN apt-get install -y pandoc sqlite3
