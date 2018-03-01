@@ -34,7 +34,7 @@ RUN apt-get install -y python3-pip python3-dev\
 # TA-Lib
 RUN wget https://pypi.python.org/packages/0a/7d/a5f64eadbac6cf7ee41f9ae88fcfee1ff0824ffea529efe1e5cb2dd7e60b/TA-Lib-0.4.16.tar.gz \
   && tar -xvzf TA-Lib-0.4.16.tar.gz\
-  && cd ta-lib/\
+  && cd TA-Lib-0.4.16/ta-lib/\
   && ./configure --prefix=/usr\
   && make\
   && make install
