@@ -29,7 +29,7 @@ RUN apt-get install -y make vim less
 
 # Install python modules
 RUN apt-get install -y python3-pip python3-dev\
-  && pip3 install --upgrade pip numpy==1.14.3 scipy==0.17 setuptools ccxt==1.13.76
+  && pip3 install --upgrade pip numpy==1.14.3 scipy==1.1.0 setuptools ccxt==1.13.76
 
 # TA-Lib
 RUN wget http://sourceforge.mirrorservice.org/t/ta/ta-lib/ta-lib/0.4.0/ta-lib-0.4.0-src.tar.gz \
