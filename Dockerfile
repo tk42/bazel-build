@@ -29,6 +29,7 @@ RUN apt-get install -y make vim less
 
 # Install python modules
 RUN apt-get install -y python3-pip python3-dev\
+  && yum install atlas-devel lapack-devel blas-devel\
   && pip3 install --upgrade pip numpy==1.14.3 scipy==1.1.0 setuptools ccxt==1.13.76
 
 # Install other modules
