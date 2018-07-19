@@ -26,7 +26,7 @@ RUN apt-get update \
 
 # Install basic commands
 RUN apt-get install -y make vim less
-RUN apt-get atlas-devel lapack-devel blas-devel
+RUN apt-get install libatlas-base-dev libatlas-doc libopenblas-base libopenblas-dev
 
 # Install python modules
 RUN apt-get install -y python3-pip python3-dev\
