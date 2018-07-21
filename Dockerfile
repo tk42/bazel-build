@@ -31,7 +31,7 @@ RUN apt-get install -y libatlas-base-dev libatlas-doc libopenblas-base libopenbl
 # Install python modules
 RUN apt-get install -y python3-pip python3-dev\
   && pip3 install --upgrade pip
-RUN pip install -y numpy==1.14.3 scipy==1.1.0 setuptools ccxt==1.13.76 \
+RUN pip install numpy==1.14.3 scipy==1.1.0 setuptools ccxt==1.13.76 \
   && six==1.10.0 python-dateutil==2.6.0 pytz==2017.2 munch==2.1.1 \
   && pypandoc==1.4 logutils==0.3.5 requests==2.18.4 deribit-api aiohttp==3.0.5 \
   && ta==0.1.5 multiprocessing-logging==0.2.5 sqlite3worker==1.1.7 mock==2.0.0 \
