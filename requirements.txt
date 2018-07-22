@@ -17,3 +17,4 @@ awscli==1.15.59
 python-dateutil
 deribit-api
 multiprocessing-logging
+jupyter
