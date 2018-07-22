@@ -6,8 +6,6 @@ FROM openjdk:8
 
 MAINTAINER Tadashi KOJIMA <nsplat@gmail.com>
 
-RUN cat /etc/apt/sources.list
-
 # To install Bazel, see https://docs.bazel.build/versions/master/install-ubuntu.html#install-with-installer-ubuntu
 RUN apt-get update \
   && apt-get install -y pkg-config zip g++ zlib1g-dev unzip \
@@ -39,3 +37,6 @@ RUN pip3 install -r /home/requirements.txt
 
 # Install other modules
 RUN apt-get install -y pandoc sqlite3
+
+# Set up workspace
+WORKDIR /home
