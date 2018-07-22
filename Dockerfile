@@ -6,6 +6,8 @@ FROM openjdk:8
 
 MAINTAINER Tadashi KOJIMA <nsplat@gmail.com>
 
+RUN cat /etc/apt/sources.list
+
 # To install Bazel, see https://docs.bazel.build/versions/master/install-ubuntu.html#install-with-installer-ubuntu
 RUN apt-get update \
   && apt-get install -y pkg-config zip g++ zlib1g-dev unzip \
@@ -26,17 +28,14 @@ RUN apt-get update \
 
 # Install basic commands
 RUN apt-get install -y make vim less
-RUN apt-get install -y libatlas-base-dev libatlas-doc libopenblas-base libopenblas-dev
+RUN apt-get install -y libatlas-doc libopenblas-base
+# skip install libatlas-base-dev libopenblas-dev
 
 # Install python modules
-RUN apt-get install -y python3-pip python3-dev\
+RUN apt-get install -y python3-pip python3-dev \
   && pip3 install --upgrade pip
-RUN pip3 install numpy==1.14.3 scipy==1.1.0 setuptools>=38.5.1 ccxt==1.13.76 six==1.10.0 pytz==2017.2 munch==2.1.1 pypandoc==1.4 logutils==0.3.5 requests==2.18.4 aiohttp==3.0.5 ta==0.1.5 sqlite3worker==1.1.7 mock==2.0.0 boto3==1.7.40 importlib==1.0.4 awscli==1.15.59
-RUN pip3 install -U python-dateutil deribit-api multiprocessing-logging
+COPY requirements.txt /home/requirements.txt
+RUN pip3 install -r /home/requirements.txt
 
 # Install other modules
 RUN apt-get install -y pandoc sqlite3
-
-# Set up workspace
-ENV LOCAL_DIST_DIR /home/workspace
-WORKDIR /home
