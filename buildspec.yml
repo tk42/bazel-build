@@ -13,11 +13,12 @@ phases:
       - echo Build started on `date`
       - echo Building the Docker image...
       - docker build -t $REPOSITORY_URI:latest .
+      - docker tag bazel-build:latest ${REPOSITORY_URI}:latest
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker images...
-      - docker push $REPOSITORY_URI
+      - docker push $REPOSITORY_URI:latest
       - echo Writing image definitions file...
       - echo "[{\"name\":\"${IMAGE_NAME}\",\"imageUri\":\"${REPOSITORY_URI}:latest\"}]" > imagedefinitions.json
 artifacts:
