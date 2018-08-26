@@ -1,4 +1,5 @@
-FROM openjdk:8
+FROM python:3.7.0-stretch
+#FROM openjdk:8
 # Bazel uses jdk8. Importing jdk8 image in advance, docker runs faster.
 # but there are some problem between openjdk8 and Bazel 0.5.3.
 
